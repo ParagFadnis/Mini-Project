@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Role Based Auth</title>
+</head>
+<body>
+
+    <h1>Login</h1>
+
+    <select id="role">
+        <option value="">--Select Role--</option>
+        <option value="admin">Admin</option>
+        <option value="public">Public</option>
+        <option value="volunteer">Volunteer</option>
+    </select>
+
+    <br><br>
+
+    <input type="text" id="username" placeholder="Username"><br><br>
+    <input type="password" id="password" placeholder="Password"><br><br>
+
+    <button onclick="login()">Login</button>
+
+    <hr>
+
+    <h1>Register</h1>
+
+    <select id="regRole">
+        <option value="">--Select Role--</option>
+        <option value="public">Public</option>
+        <option value="volunteer">Volunteer</option>
+    </select>
+
+    <br><br>
+
+    <input type="text" id="regUsername" placeholder="Username"><br><br>
+    <input type="password" id="regPassword" placeholder="Password"><br><br>
+
+    <button onclick="register()">Register</button>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

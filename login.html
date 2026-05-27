@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Animal Welfare</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-page">
+
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="back-btn" onclick="goTo('home.html')">
+                <span>←</span> Back
+            </div>
+
+            <div class="auth-header">
+                <div class="auth-icon">🐶</div>
+                <h2>Welcome Back!</h2>
+                <p>Login to your account</p>
+            </div>
+
+            <form class="auth-form" onsubmit="event.preventDefault(); login();">
+                <div class="form-group">
+                    <label for="role">Select Role</label>
+                    <div class="select-wrapper">
+                        <select id="role" required>
+                            <option value="">Choose your role...</option>
+                            <option value="admin">👨‍💼 Admin</option>
+                            <option value="public">👤 Public User</option>
+                            <option value="volunteer">🚑 Volunteer</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" placeholder="Enter username" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="password" placeholder="Enter password" required>
+                        <span class="toggle-password" onclick="togglePassword('password')">👁️</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-primary">
+                    <span>Login</span>
+                    <span class="btn-arrow">→</span>
+                </button>
+            </form>
+
+            <div class="auth-footer">
+                Don't have an account? 
+                <span class="link" onclick="goTo('register.html')">Register</span>
+            </div>
+        </div>
+
+        <div class="auth-illustration">
+            <div class="floating-animal">🐕</div>
+            <div class="floating-animal">🐈</div>
+            <div class="floating-animal">🐇</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

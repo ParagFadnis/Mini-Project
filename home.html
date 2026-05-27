@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Welfare Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="home-page">
+    
+    <div class="particles-bg"></div>
+    
+    <div class="home-container">
+        <div class="logo-container">
+            <div class="logo-circle">
+                <span class="logo-icon">🐾</span>
+            </div>
+            <h1 class="main-title">Animal Welfare</h1>
+            <p class="subtitle">Protecting & Caring for Animals in Need</p>
+        </div>
+
+        <div class="home-cards">
+            <div class="home-card" onclick="goTo('login.html')">
+                <div class="card-icon">🔐</div>
+                <h3>Login</h3>
+                <p>Access your account</p>
+            </div>
+
+            <div class="home-card" onclick="goTo('register.html')">
+                <div class="card-icon">📝</div>
+                <h3>Register</h3>
+                <p>Create new account</p>
+            </div>
+        </div>
+
+        <div class="stats-section">
+            <div class="stat-item">
+                <span class="stat-number" id="reportsCount">0</span>
+                <span class="stat-label">Reports Handled</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="animalsCount">0</span>
+                <span class="stat-label">Animals Rescued</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="volunteersCount">0</span>
+                <span class="stat-label">Active Volunteers</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

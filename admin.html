@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-page">
+
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span class="nav-icon">🧠</span>
+            <span class="nav-title">Admin Dashboard</span>
+        </div>
+        <div class="nav-user">
+            <span class="user-greeting">Admin Panel 👨‍💼</span>
+            <button class="btn-logout" onclick="logout()">Logout</button>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="menu-items">
+                <div class="menu-item active" onclick="showAdminSection('reports')" data-section="reports">
+                    <span class="menu-icon">📋</span>
+                    <span class="menu-text">All Reports</span>
+                </div>
+                <div class="menu-item" onclick="showAdminSection('adoptions')" data-section="adoptions">
+                    <span class="menu-icon">🐾</span>
+                    <span class="menu-text">Manage Adoptions</span>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <!-- REPORTS SECTION -->
+            <div id="reports" class="content-section active">
+                <div class="section-header">
+                    <h2>📋 All Reports</h2>
+                    <button class="btn-secondary" onclick="loadAllReports()">
+                        <span>🔄</span> Refresh
+                    </button>
+                </div>
+
+                <div class="admin-reports-grid" id="allReports"></div>
+            </div>
+
+            <!-- ADOPTIONS SECTION -->
+            <div id="adoptions" class="content-section">
+                <div class="section-header">
+                    <h2>🐾 Manage Adoptions</h2>
+                    <button class="btn-primary" onclick="toggleAdoptionForm()">
+                        <span>+</span> Add Animal
+                    </button>
+                </div>
+
+                <div id="adoptionForm" class="adoption-form-card" style="display:none;">
+                    <h3>Add Animal for Adoption</h3>
+                    <div class="form-group">
+                        <label>Animal Type</label>
+                        <input type="text" id="animalType" placeholder="e.g., Dog, Cat, Rabbit...">
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="animalDesc" placeholder="Describe the animal..." rows="4"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button class="btn-primary" onclick="addAdoption()">Add Animal</button>
+                        <button class="btn-secondary" onclick="toggleAdoptionForm()">Cancel</button>
+                    </div>
+                </div>
+
+                <div class="adoption-list" id="adoptionManageList"></div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

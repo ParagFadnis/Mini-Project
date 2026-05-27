@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-page">
+
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span class="nav-icon">🐾</span>
+            <span class="nav-title">Animal Welfare</span>
+        </div>
+        <div class="nav-user">
+            <span class="user-greeting">Hello, User! 👋</span>
+            <button class="btn-logout" onclick="logout()">Logout</button>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="menu-items">
+                <div class="menu-item active" onclick="showSection('report')" data-section="report">
+                    <span class="menu-icon">📸</span>
+                    <span class="menu-text">Report Animal</span>
+                </div>
+                <div class="menu-item" onclick="showSection('track')" data-section="track">
+                    <span class="menu-icon">📊</span>
+                    <span class="menu-text">Track Reports</span>
+                </div>
+                <div class="menu-item" onclick="showSection('adopt')" data-section="adopt">
+                    <span class="menu-icon">🐶</span>
+                    <span class="menu-text">Adoptions</span>
+                </div>
+                <div class="menu-item" onclick="showSection('donate')" data-section="donate">
+                    <span class="menu-icon">💰</span>
+                    <span class="menu-text">Donations</span>
+                </div>
+                <div class="menu-item" onclick="showSection('info')" data-section="info">
+                    <span class="menu-icon">📘</span>
+                    <span class="menu-text">Animal Info</span>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <!-- REPORT SECTION -->
+            <div id="report" class="content-section active">
+                <div class="section-header">
+                    <h2>📸 Report an Animal in Need</h2>
+                    <p>Help us rescue animals by reporting their location</p>
+                </div>
+
+                <div class="report-form">
+                    <div class="image-upload-area" id="imageUploadArea">
+                        <input type="file" id="image" accept="image/*" hidden onchange="handleImageUpload(event)">
+                        <div class="upload-placeholder" onclick="document.getElementById('image').click()">
+                            <span class="upload-icon">📷</span>
+                            <p>Click to upload image</p>
+                            <span class="upload-hint">or drag and drop</span>
+                        </div>
+                        <img id="imagePreview" class="image-preview" style="display:none;">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="description" placeholder="Describe the animal's condition and situation..." rows="5"></textarea>
+                    </div>
+
+                    <div class="location-info" id="locationInfo">
+                        <span class="location-icon">📍</span>
+                        <span>Location will be detected automatically</span>
+                    </div>
+
+                    <button class="btn-primary btn-large" onclick="submitReport()">
+                        <span>Submit Report</span>
+                        <span class="btn-arrow">→</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- TRACK SECTION -->
+            <div id="track" class="content-section">
+                <div class="section-header">
+                    <h2>📊 Your Reports</h2>
+                    <p>Track the status of your submitted reports</p>
+                </div>
+
+                <button class="btn-secondary" onclick="getReports()">
+                    <span>🔄</span> Refresh Reports
+                </button>
+
+                <div class="reports-grid" id="reportList"></div>
+            </div>
+
+            <!-- ADOPT SECTION -->
+            <div id="adopt" class="content-section">
+                <div class="section-header">
+                    <h2>🐶 Animals Available for Adoption</h2>
+                    <p>Give a loving home to these wonderful animals</p>
+                </div>
+
+                <button class="btn-secondary" onclick="getAdoptions()">
+                    <span>🔄</span> Load Animals
+                </button>
+
+                <div class="adoption-grid" id="adoptionList"></div>
+            </div>
+
+            <!-- DONATE SECTION -->
+            <div id="donate" class="content-section">
+                <div class="section-header">
+                    <h2>💰 Support Our Mission</h2>
+                    <p>Your donations help us rescue and care for animals</p>
+                </div>
+
+                <div class="donation-cards">
+                    <div class="donation-card">
+                        <div class="donation-icon">🍖</div>
+                        <h3>Feed Animals</h3>
+                        <p class="donation-amount">₹500</p>
+                        <button class="btn-donate">Donate Now</button>
+                    </div>
+                    <div class="donation-card">
+                        <div class="donation-icon">💊</div>
+                        <h3>Medical Care</h3>
+                        <p class="donation-amount">₹1000</p>
+                        <button class="btn-donate">Donate Now</button>
+                    </div>
+                    <div class="donation-card">
+                        <div class="donation-icon">🏠</div>
+                        <h3>Shelter Support</h3>
+                        <p class="donation-amount">₹2000</p>
+                        <button class="btn-donate">Donate Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- INFO SECTION -->
+            <div id="info" class="content-section">
+                <div class="section-header">
+                    <h2>📘 Animal Safety Guidelines</h2>
+                    <p>Learn how to safely interact with animals</p>
+                </div>
+
+                <div class="info-cards">
+                    <div class="info-card do">
+                        <h3>✅ Do's</h3>
+                        <ul>
+                            <li>Feed animals safely with appropriate food</li>
+                            <li>Maintain a safe distance from wild animals</li>
+                            <li>Call professionals for injured animals</li>
+                            <li>Provide water in hot weather</li>
+                            <li>Report animal abuse immediately</li>
+                        </ul>
+                    </div>
+                    <div class="info-card dont">
+                        <h3>❌ Don'ts</h3>
+                        <ul>
+                            <li>Never harm or abuse animals</li>
+                            <li>Don't panic near injured animals</li>
+                            <li>Avoid sudden movements around strays</li>
+                            <li>Don't feed chocolate or toxic foods</li>
+                            <li>Never separate babies from mothers</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-page">
+
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span class="nav-icon">🚑</span>
+            <span class="nav-title">Volunteer Dashboard</span>
+        </div>
+        <div class="nav-user">
+            <span class="user-greeting">Volunteer Panel 👨‍⚕️</span>
+            <button class="btn-logout" onclick="logout()">Logout</button>
+        </div>
+    </nav>
+
+    <div class="dashboard-container single-col">
+        <main class="main-content">
+            <div class="section-header">
+                <h2>📍 Available Reports</h2>
+                <button class="btn-secondary" onclick="loadPendingReports()">
+                    <span>🔄</span> Refresh
+                </button>
+            </div>
+
+            <div class="volunteer-stats">
+                <div class="stat-card">
+                    <span class="stat-icon">📋</span>
+                    <div>
+                        <div class="stat-value" id="pendingCount">0</div>
+                        <div class="stat-label">Pending Reports</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">✅</span>
+                    <div>
+                        <div class="stat-value" id="completedCount">0</div>
+                        <div class="stat-label">Completed</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="volunteer-reports-grid" id="pendingReports"></div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
